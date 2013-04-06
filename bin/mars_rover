@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+path = File.expand_path(File.dirname(__FILE__))
+$:<< "#{path}/../lib"
+
+require 'optparse'
+require 'mars_rover'
+
+parser = OptionParser.new do |opts|
+  opts.banner = "Usage: mars_rover"
+
+  opts.on("-h", "--help", "Help usage") do
+    puts '''
+    Example input:
+      5 5
+      1 2 N
+      LMLMLMLMM
+      3 3 E
+      MMRMMRMRRM
+
+    Example output:
+      1 3 N
+      5 1 E
+    '''
+    exit
+  end
+end.parse!
+
+MarsRover.start
